@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- icon -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="/asets/css/style.css">
+    <!-- boostrap -->
+    <link href="asets/boostrap/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  </head>
+  <body>
+    <!-- navbar boostrap -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <h1 class="navbar-brand" >MyWeb.</h1>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="project-list.html">My Project</a>
+            </li>
+          </ul>
+            <a href="contact.html" class="btn btn-outline-primary" type="submit">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- content -->
+    <div class="container addProject" style="
+                                 width: 30%;
+                                  box-shadow: none;
+                                 text-align: center;
+                                 ">
+      <h2>Tambah project</h2>
+        <table style="width: 100%;">
+          <tr>
+            <td colspan="2">
+              <input name="projectName" id="projectName" type="text" class="form-control" placeholder="Nama Project">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input name="createAt" id="createAt" type="date" class="form-control" placeholder="Tanggal Mulai">
+            </td>
+            <td>
+              <input name="endAt" id="endAt" type="date" class="form-control" placeholder="Tanggal Selesai">
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <textarea name="descript" id="descript" class="form-control" placeholder="Deskripsi" id="floatingTextarea" style="height: 100px"></textarea>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" style="text-align: left;"><p style="padding: 10px 0 0 0; font-weight: 600;">Teknologi</p></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-check" style="text-align: left;">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Node Js
+                </label>
+              </div>
+              <div class="form-check" style="text-align: left;">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                <label class="form-check-label" for="flexCheckChecked">
+                  React Js
+                </label>
+              </div>
+            </td>
+            <td>
+              <div class="form-check" style="text-align: left;">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Next Js
+                </label>
+              </div>
+              <div class="form-check" style="text-align: left;">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                <label class="form-check-label" for="flexCheckChecked">
+                  TypeScript
+                </label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <input name="image" id="image" type="file" class="form-control" placeholder="Upload gambar">
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td style="text-align: right;">
+              <button class="btn btn-info">Submit</button>
+            </td>
+          </tr>
+        </table>
+
+    </div>
+  
+    
+    <script>
+      // icon
+      feather.replace();
+    </script>
+    <!-- boostrap -->
+    <script src="/asets/boostrap/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>

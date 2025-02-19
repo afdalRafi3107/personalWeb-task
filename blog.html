@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- icon -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="nav">
+        <ul>
+          <li>
+            <h1>MyWEB.</h1>
+          </li>
+          <li><a href="indext.html">Home</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+      </div>
+      <a href="contact.html" class="contact">Contact</a>
+    </div>
+
+    <!-- blog -->
+     <form action="" class="formBlog" id="formBlog" >
+        <h1>Blog</h1>
+        <table>
+            <tr>
+                <td colspan="2">
+                    <div class="form-list">
+                        <label for="">Project Name</label>
+                        <input type="text" id="project" />
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-list">
+                        <label for="">Start Date</label>
+                        <input type="text" id="startD" />
+                    </div>
+                </td>
+                <td>
+                    <div class="form-list">
+                        <label for="">End Date</label>
+                        <input type="text" id="endD" />
+                    </div>
+                </td>
+                <tr>
+                    <td colspan="2">
+                        <div class="form-list">
+                            <label for="">Description</label>
+                            <textarea id="description" rows="6"></textarea>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <div class="form-list">
+                        <td colspan="2"><label for="">Technologies</label</td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-list">
+                                <input name="tech" type="checkbox" style="width: 15px; margin: 0;" value="Node Js">
+                                <label>Node Js</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-list">
+                                <input name="tech" type="checkbox" style="width: 15px; margin: 0;" value="Next Js">
+                                <label for=""">Next Js</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-list">
+                                <input name="tech" type="checkbox" style="width: 15px; margin: 0;" value="React Js">
+                                <label for="">React Js</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-list">
+                                <input name="tech" type="checkbox" style="width: 15px; margin: 0;" value="TypeScript">
+                                <label for="">TypeScript</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <td colspan="2">
+                        <div class="form-list">
+                            <label for="">Upload Image</label>
+                            <input type="file" id="image" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="blogBtn">
+                        <button type="submit" id="submit">Submit</button>
+                        </div>
+                    </td>
+                </tr>
+        </table>
+     </form>
+    </div>
+
+    <!-- blog  List -->
+    <section class="blogList" id="blogList">
+        <hr>
+        <!-- <div class="blogCard">
+            <div class="image">
+                <img src="avatar.jpg" alt="">
+            </div>
+            <div class= "blogList-content">
+                <h1>Project Name</h1>
+                <p>Durasi : 3 Bulan</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, inventore eligendi. </p>
+                <i data-feather="github"></i>
+                <i data-feather="eye"></i>
+                <i data-feather="send"></i>
+                <br>
+                <div class="button">
+                    <button>edit</button>
+                    <button>delete</button>
+                </div>
+            </div>
+        </div> -->
+    </section>
+
+  
+    
+    <script>
+      // icon
+      feather.replace();
+    </script>
+    <script src="bblog.js"></script>
+  </body>
+</html>

@@ -14,20 +14,33 @@
     <!-- icon -->
     <script src="https://unpkg.com/feather-icons"></script>
     <link rel="stylesheet" href="/asets/css/style.css" />
+    <!-- boostrap -->
+    <link href="asets/boostrap/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    
   </head>
   <body>
-    <div class="navbar">
-      <div class="nav">
-        <ul>
-          <li>
-            <h1>MyWEB.</h1>
-          </li>
-          <li><a href="indext.html">Home</a></li>
-          <li><a href="#">About</a></li>
-        </ul>
+    <!-- navbar boostrap -->
+    <nav class="navbar navbar-expand-md bg-body-tertiary">
+      <div class="container-lg">
+        <h1 class="navbar-brand" >MyWeb.</h1>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="indext.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="project-list.html">My Project</a>
+            </li>
+          </ul>
+            <a href="contact.html" class="btn btn-outline-primary" type="submit">Contact</a>
+        </div>
       </div>
-      <a href="" class="contact">Contact</a>
-    </div>
+    </nav>
+
     <!-- contact -->
     <form action="" onsubmit="KirimEmail()">
       <div class="form-input">
@@ -75,5 +88,9 @@
       // icon
       feather.replace();
     </script>
+    <!-- boostrap -->
+    <script src="/asets/boostrap/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>
   </body>
 </html>

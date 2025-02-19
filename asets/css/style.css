@@ -65,16 +65,12 @@ body {
 }
 
 /* container */
-.container {
+/* .container {
   width: 900px;
   margin: 30px auto;
   padding: 20px 30px;
   box-shadow: 2px 2px 5px #000000;
   border-radius: 20px;
-}
-.content {
-  width: 80%;
-  text-align: justify;
 }
 .container .container-list {
   margin: 0;
@@ -82,73 +78,60 @@ body {
   display: flex;
   list-style: none;
   gap: 100px;
+} */
+.content {
+  width: 80%;
+  text-align: justify;
 }
 
-.content button {
-  width: 90px;
+.intro .contact {
+  width: 120px;
   height: 40px;
   border: none;
   font-family: sans-serif;
   font-weight: bold;
-  background-color: #4891e0;
+  background-color: #0477f1;
   color: white;
-  border-radius: 30px;
+  border-radius: 8px;
   margin-top: 20px;
   margin-bottom: 20px;
+  margin-right: 10px;
 }
-.content button:hover {
-  background-color: #0477f1;
+.intro .contact:hover {
+  background-color: #3290f5;
+  color: white;
 }
-.content .cv {
+.intro .cv {
   text-decoration: none;
   font-family: "Poppins";
   font-size: 13px;
   margin-top: 40px;
   margin-bottom: 30px;
-  color: black;
+  align-items: center;
+  color: #0477f1;
 }
-.content .cv:hover {
-  color: #4891e0;
+.intro .cv:hover {
+  color: #3290f5;
 }
-.content .social-media {
-  width: 350px;
+.intro .social-media {
+  width: 250px;
   height: 50;
-  margin: auto;
-  margin-top: 20px;
-}
-.content .social-media ul {
+  margin: 10px 0 auto;
+  justify-content: space-between;
   display: flex;
-  list-style: none;
-  gap: 25px;
-  margin: auto;
-  padding: 0;
-  margin: auto;
-}
-.content .social-media ul li {
-  padding: 6px 10px;
-  background-color: #4891e0;
-  border-radius: 50px;
-  margin-top: 10px;
-}
-.content .social-media ul li:hover {
-  background-color: #0477f1;
-}
-.content .social-media ul li a {
-  color: white;
-}
-
-.container .card {
-  width: 300px;
-  height: 420px;
-  padding: 15px;
   margin-top: 20px;
-  box-shadow: 2px 2px 5px #000000;
-  border-radius: 20px;
-  float: left;
 }
-.container .card img {
-  width: 100%;
-  border-radius: 20px;
+.intro .social-media a {
+  padding: 10px;
+  background-color: #0477f1;
+  color: white;
+  border-radius: 15px;
+  align-items: center;
+  transition: 1s;
+}
+.intro .social-media a:hover{
+  border-radius: 30px;
+  background-color: #3290f5;
 }
 
 /* contact */
@@ -203,96 +186,43 @@ form-content button:hover {
   background-color: #145fae;
 }
 
-/* blog */
-
-.formBlog input,
-textarea {
+/* card */
+.contProject .tombol{
   width: 100%;
-  height: 40px;
-  border: 3px solid rgb(225, 222, 222);
-  border-radius: 15px;
-  font-size: 15px;
+  display: flex; 
+  margin: 10px 0 0 0;
+  justify-content: space-between;
+
 }
-.formBlog {
-  margin: 40px auto;
-  width: 450px;
-}
-.formBlog button {
-  padding: 10px 20px;
-  border: none;
+
+.contProject .tombol a{
+  padding: 1px 40px;
+  font-size: small;
   background-color: #0477f1;
-  font-weight: bold;
   color: white;
-  border-radius: 10px;
-  text-align: right;
 }
-.formBlog tr td {
-  padding: 8px;
-}
-.formBlog .form-list {
-  margin: none;
-  padding: 0;
-}
-.blogBtn {
-  text-align: right;
+.contProject .tombol a:hover{
+  background-color: #3290f5;
 }
 
-/* blog list */
-
-.blogList {
-  margin: 20px auto;
-  width: 1200px;
-}
-.blogList .blogCard {
-  width: 260px;
-  height: 530px;
-  padding: 10px;
-  margin: 8px;
-  box-shadow: 5px 5px 10px rgb(183, 183, 183);
-  display: inline-block;
-  border-radius: 8px;
-  background-color: white;
-}
-.blogList .blogCard .image img {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-.blogList .blogCard .blogList-content {
-  flex: 1;
-}
-
-.blogList .blogCard .blogList-content .button {
-  text-align: center;
-}
-.blogList .blogCard .blogList-content .button button {
-  width: 120px;
-  height: 25px;
-  border: 0;
-  background-color: #0477f1;
-  font-weight: 700;
-  color: white;
-  border-radius: 5px;
-  margin: 3px;
-  cursor: pointer;
-}
-
-/* card  */
-.container-md section{
-  width: 100%;
-  height: auto;
-  background-color: rgb(128, 204, 204);
+.contProject .social-media {
   display: flex;
-  flex: auto;
-  justify-content: space-around;
 }
-.container-md section .card{
-  width: 100%;
-  margin: 10px;
+.contProject .social-media a i{
+  padding: 0;
+  margin: 0;
 }
 
-/* add project */
-
-.addProject table tr td input, textarea{
-  margin: 10px 0;
+.contProject .social-media a {
+  padding: 6px 10px;
+  background-color: #0477f1;
+  color: white;
+  align-items: center;
+  transition: 1s;
+  align-items: center;
+  border-radius: 10px;
+}
+.contProject .social-media a:hover{
+  border-radius: 30px;
+  background-color: #3290f5;
 }

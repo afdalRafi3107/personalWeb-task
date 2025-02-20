@@ -5,8 +5,6 @@ function KirimEmail() {
   let skill = document.getElementById("skill").value;
   let pesan = document.getElementById("pesan").value;
 
-  alert(nama, email, subjek, skill, pesan);
-
   let a = document.createElement("a");
 
   const EmailTujuan = "afdalrafi990@gmail.com";

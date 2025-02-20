@@ -127,7 +127,7 @@ body {
   color: white;
   border-radius: 15px;
   align-items: center;
-  transition: 1s;
+  transition: 0.5s;
 }
 .intro .social-media a:hover{
   border-radius: 30px;
@@ -218,7 +218,7 @@ form-content button:hover {
   background-color: #0477f1;
   color: white;
   align-items: center;
-  transition: 1s;
+  transition: 0.5s;
   align-items: center;
   border-radius: 10px;
 }

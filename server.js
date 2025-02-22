@@ -29,6 +29,11 @@ const{
     renderEditBlog,
     editBlog,
     renderBlogDetail,
+    addProject,
+    renderProject,
+    deleteProject,
+    renderEditProject,
+    editProject,
     }= require("./controllers/controllers");
 
 hbs.registerHelper("formatDateToWIB", formatDateToWIB)
@@ -41,14 +46,8 @@ app.get("/index", (req, res)=>{
     res.render("index")
 })
 
-//panggil halaman project-list
-app.get("/projectList", (req, res)=>{
-    res.render("project-list")
-})
-//panggil halaman project-add
-app.get("/projectAdd", (req, res)=>{
-    res.render("project-add")
-})
+
+
 //panggil halaman contact
 app.get("/contact", (req, res)=>{
     res.render("contact")
@@ -63,6 +62,7 @@ app.get("/blog-add", (req, res)=>{
 //tambah blog
 app.post("/blog-add", addBlog);
 //hapus blog
+app.post("/blog-list/:id", renderBlog);
 app.delete("/blog-list/:id", deleteBlog);
 //render edit blog
 app.get("/blog-edit/:id", renderEditBlog);
@@ -71,8 +71,23 @@ app.post("/blog-edit/:id", editBlog);
 //render blog detail
 app.get("/blog-detail/:id", renderBlogDetail);
 
-//rendecontent blog
-
+//-----------------------------proses project page--------------------
+//panggil halaman project-list
+app.get("/projectList", renderProject)
+//panggil halaman project-add
+app.get("/projectAdd", (req, res)=>{
+    res.render("project-add")
+})
+//tambah project
+app.post("/projectAdd", addProject);
+//deleteproject
+app.delete("/projectList/:id", deleteProject)
+//render Project
+app.get("/projectEdit",  (req, res)=>{
+    res.render("project-edit")
+})
+app.get("/projectEdit/:id", renderEditProject)
+app.post("/projectEdit/:id", editProject)
 //----------------------------------------------------------------------------------------------------
 
 app.listen(port, () =>{

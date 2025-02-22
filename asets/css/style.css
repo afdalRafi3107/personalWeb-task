@@ -136,6 +136,12 @@ body {
   background-color: #0477f1;
   color: white;
 }
+.contProject .tombol button{
+  padding: 1px 40px;
+  font-size: small;
+  background-color: #0477f1;
+  color: white;
+}
 .contProject .tombol a:hover{
   background-color: #3290f5;
 }
@@ -160,6 +166,19 @@ body {
 .contProject .social-media a:hover{
   border-radius: 30px;
   background-color: #3290f5;
+}
+.contProject .card img{
+  width: 100%;
+  height: 200px;
+  object-fit:cover;
+}
+.contProject .card{
+  height: 480px;
+}
+
+.contProject .collCard{
+align-items: center;
+padding: 20px;
 }
 
 /* blog css ----------------------------------------------------------------------*/

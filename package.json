@@ -18,6 +18,7 @@
   "homepage": "https://github.com/afdalRafi3107/personalWeb-task#readme",
   "description": "",
   "dependencies": {
+    "bootbox": "^6.0.0",
     "express": "^4.21.2",
     "hbs": "^4.2.0",
     "instead": "^1.0.3",

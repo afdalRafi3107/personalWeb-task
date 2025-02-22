@@ -5,7 +5,7 @@
     <div class="container-lg mt-3" style=" text-align: center;">
       <h2>Tambah Project</h2>
 
-      <form action="">
+      <form action="/projectAdd" method="post">
         <table style="width: 350px; margin:10px auto;">
           <tr>
             <td colspan="2">
@@ -14,7 +14,7 @@
           </tr>
           <tr>
             <td>
-              <input name="createAt" id="createAt" type="date" class="form-control" placeholder="Tanggal Mulai">
+              <input name="startAt" id="createAt" type="date" class="form-control" placeholder="Tanggal Mulai">
             </td>
             <td>
               <input name="endAt" id="endAt" type="date" class="form-control" placeholder="Tanggal Selesai">
@@ -31,13 +31,13 @@
           <tr>
             <td>
               <div class="form-check" style="text-align: left;">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <input name="tech" class="form-check-input" type="checkbox" value="Node Js" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
                   Node Js
                 </label>
               </div>
-              <div class="form-check" style="text-align: left;">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+              <div  class="form-check" style="text-align: left;">
+                <input name="tech" class="form-check-input" type="checkbox" value="Reac js" id="flexCheckChecked">
                 <label class="form-check-label" for="flexCheckChecked">
                   React Js
                 </label>
@@ -45,13 +45,13 @@
             </td>
             <td>
               <div class="form-check" style="text-align: left;">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <input name="tech" class="form-check-input" type="checkbox" value="Next Js" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
                   Next Js
                 </label>
               </div>
               <div class="form-check" style="text-align: left;">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                <input name="tech" class="form-check-input" type="checkbox" value="TypeScript" id="flexCheckChecked">
                 <label class="form-check-label" for="flexCheckChecked" >
                   TypeScript
                 </label>
@@ -66,7 +66,7 @@
           <tr>
             <td></td>
             <td style="text-align: right;">
-              <button class="btn btn-info mt-2" type="submit">Submit</button>
+              <button class="btn btn-info mt-2" type="submit" onclick="dateiff()">Submit</button>
             </td>
           </tr>
         </table>

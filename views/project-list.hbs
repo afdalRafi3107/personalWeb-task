@@ -8,33 +8,35 @@
           <div style="text-align:right;
                       margin: 20px auto;
                       ">
+            <form action="" method="post">
             <a class="btn btn-primary text-end" href="/projectAdd">Add Project</a>
+            </form>
           </div>
           <hr>
 
           <!-- bagian konten card -->
         <div class="row">
-          
-        <div class="col-md-4">
-         <div class="card coll" style="width: 18rem;">
-            <img src="/img/g1.jpg" class="card-img-top" alt="...">
+
+        {{#each project}}
+        <div class="col-md-4 collCard">
+         <div class="card coll" style="width: 18rem; ">
+            <img src="{{ this.image }}" class="card-img-top" alt="...">
             <div class="card-body">
-                <h2>judul</h2>
-                <p>durasi: 20 hari</p>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <div class="d-flex social-media">
-                <a class="card-link" href=""><i data-feather="linkedin" style="width: 18px;"></i></a>
-                <a class="card-link" href=""><i data-feather="instagram" style="width: 18px;"></i></a>
-                <a class="card-link" href=""><i data-feather="facebook" style="width: 18px;"></i></a>
-              </div>
-              <div class="tombol">
-              <a href="#" class="btn">Update</a>
-              <a href="#" class="btn">Delete</a>
+                <h2>{{this.projectName}}</h2>
+                <p>durasi: {{this.totalHari}} hari</p>
+              <p class="card-text">{{this.descript}}</p>
+              <p style="font-style: italic;">{{this.tech}}</p>
+              <div class="tombol align-text-bottom">
+              <a href="/projectEdit/{{this.id}}" class="btn">Update</a>
+              <form action="/projectList/{{this.id}}?_method=DELETE" method="post" style="display: inline;">
+              <button class="btn" onclick="return confirm('hapus?')">Hapus</button>
+              </form>
               </div>
             </div>
           </div>
         </div>
+        {{/each}}
 
         </div>
-        </div>
+      </div>
       {{/layout}}

@@ -1,0 +1,46 @@
+ {{#> layout currentPage='Blog' }}
+
+ <div class="container-lg mt-3 mb-5 contProject" >
+          <div class="" style="text-align: center;">
+            <h1>Daftar Blog</h1>
+          </div>
+          <div style="text-align:right;
+                      margin: 20px auto;
+                      ">
+            <form action="" method="post">
+            <a class="btn btn-primary text-end" href="/blog-add">Tambah Blog</a>
+            </form>
+          </div>
+          <hr>
+    {{!-- content --}}
+  
+      
+
+    {{#each blogs}}
+      <section class="blog border mb-2">
+      <div class="row"> 
+      <div class="col-sm-3 mb-2" style=" height: 200px;">
+        <img src="{{this.image}}" alt="">
+      </div>
+      <div class="col-sm-9">
+        <div class="a">
+        <a href="/blog-edit/{{this.id}}" class="btn btn-danger">Ubah</a>
+        <form action="/blog-list/{{this.id}}?_method=DELETE" method="post" style="display: inline;">
+        <button class="btn btn-danger">Hapus</button>
+        </form>
+        </div>
+        <a href="/blog-detail/{{this.id}}" style="text-decoration: none;" class="text-body"><h2>{{this.title}}</h2></a>
+        <p>{{ formatDateToWIB  this.createdAt}} | m afdal rafi</p>
+        <p>{{this.content}}</p>
+
+        <p class="time">{{getRelatifTime this.createdAt}}</p>
+
+      </div>
+      </div>
+    </section>
+    {{/each }}
+
+ </div>
+
+
+ {{/layout}}

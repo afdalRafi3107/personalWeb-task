@@ -1,0 +1,23 @@
+
+{{#> layout currentPage="Contact"}}
+    <!-- contact -->
+    <div class="container-lg mt-3 form-input">
+      <form action="" onsubmit="KirimEmail()">
+        <h1>Contact</h1>
+        <div class="form-content">
+            <input type="text" id="nama" class="form-control mb-2" placeholder="Nama"/>
+            <input type="text" id="email" class="form-control mb-2" placeholder="Email"/>
+            <input type="text" id="subjek" class="form-control mb-2" placeholder="Subject"/>
+            <select class="form-select mb-2" aria-label="Default select example" id="skill">
+              <option value="PHP">PHP</option>
+              <option value="HTML">HTML</option>
+              <option value="JAVASCRIPT">JAVASCRIPT</option>
+              <option value="CSS">CSS</option>
+            </select>
+            <textarea name="" id="pesan" class="form-control mb-2" rows="5" placeholder="Pesan"></textarea>
+            <button class="btn btn-primary" type="submit">Kirim</button>
+      </form>
+    </div>
+{{/layout}}
+
+

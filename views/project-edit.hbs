@@ -1,0 +1,80 @@
+
+    <!-- navbar boostrap -->
+    {{#> layout currentPage="Project"}}
+
+    <div class="container-lg mt-3" style=" text-align: center;">
+      <h2>Tambah Project</h2>
+
+      <form action="">
+        <table style="width: 350px; margin:10px auto;">
+          <tr>
+            <td colspan="2">
+              <input name="projectName" id="projectName" type="text" class="form-control" placeholder="Nama Project">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input name="createAt" id="createAt" type="date" class="form-control" placeholder="Tanggal Mulai">
+            </td>
+            <td>
+              <input name="endAt" id="endAt" type="date" class="form-control" placeholder="Tanggal Selesai">
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <textarea name="descript" id="descript" class="form-control" placeholder="Deskripsi" id="floatingTextarea" style="height: 100px"></textarea>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" style="text-align: left;"><p style="padding: 10px 0 0 0; font-weight: 600;">Teknologi</p></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-check" style="text-align: left;">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Node Js
+                </label>
+              </div>
+              <div class="form-check" style="text-align: left;">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                <label class="form-check-label" for="flexCheckChecked">
+                  React Js
+                </label>
+              </div>
+            </td>
+            <td>
+              <div class="form-check" style="text-align: left;">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Next Js
+                </label>
+              </div>
+              <div class="form-check" style="text-align: left;">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                <label class="form-check-label" for="flexCheckChecked" >
+                  TypeScript
+                </label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <input name="image" id="image" type="file" class="form-control" placeholder="Upload gambar">
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td style="text-align: right;">
+              <button class="btn btn-info mt-2" type="submit">Submit</button>
+            </td>
+          </tr>
+        </table>
+      </form>
+
+    </div>
+
+
+
+  {{/layout }}
+  

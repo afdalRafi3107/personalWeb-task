@@ -1,0 +1,39 @@
+
+    <!-- navbar boostrap -->
+    {{#> layout currentPage="Blog-add"}}
+
+    <div class="container-lg mt-3 form-input blogAdd" style=" text-align: center;">
+      <h2>Edit Blog</h2>
+
+      <form id="blog-add" action="/blog-edit/{{blog.id}}" method="post" class="create-blog form">
+        <table style="width:80%; margin:10px auto;">
+          <tr>
+            <td colspan="2">
+              <input name="title" id="title" type="text" class="form-control mb-2" placeholder="Judul" value="{{blog.title}}">
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <textarea name="content" id="content" class="form-control mb-2" placeholder="Content" id="floatingTextarea" style="height: 100px">{{blog.content}}</textarea>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <input name="image" id="image" type="file" class="form-control mb-2" placeholder="Upload gambar">
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td style="text-align: right;">
+              <button type="submit" class="btn btn-primary mt-2">Kirim</button>
+            </td>
+          </tr>
+        </table>
+      </form>
+
+    </div>
+
+
+
+  {{/layout }}
+  

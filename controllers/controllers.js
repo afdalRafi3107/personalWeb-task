@@ -1,6 +1,6 @@
 const {Sequelize, QueryTypes, DATE} = require('sequelize')
 const config = require("../config/config.json");
-const { query } = require('express');
+const query = require('express');
 
 const sequelize = new Sequelize(config.development);
 
@@ -9,6 +9,8 @@ const bcrypt = require("bcrypt")
 const {User,BLog,Project} = require("../models")
 
 const saltRounds = 10;
+require("dotenv").config();
+
 
 //-------------------login dan register-----------------------------
 
@@ -156,6 +158,7 @@ async function renderBlog(req,res){
     // console.log("ini isi blog", blogs);
 
     if(user){
+        console.log("blogs list : ", blogs)
         res.render("blog",{blogs:blogs, user:user});
     }else{
         res.render("blog", {blogs:blogs})
@@ -165,18 +168,21 @@ async function renderBlog(req,res){
 //delet blog
 async function addBlog(req, res) {
     const user = req.session.user;
-    console.log("addblog usernya adalah ",user);
+
     const idUser = user.id;
     console.log("ID usernya adalah : ", idUser);
     
     
     const {title, content} = req.body;
-    let image = "https://picsum.photos/300/300";
+
+    image = req.file.path;
+
+    let dummyImage = "https://picsum.photos/300/300";
+    
+    console.log("image yang di upload : ", image);
+
     let query = `INSERT INTO  "BLogs" ("authorId",title,content,image)
                  VALUES ('${idUser}','${title}', '${content}', '${image}')`;
-    console.log("judulny adalah : ", title)
-    console.log("contetnny adalah : ", content)
-    console.log("gambar adalah : ", image)
 
     const newblog = await sequelize.query(query,{
         type: QueryTypes.INSERT
@@ -269,22 +275,13 @@ async function renderBlogDetail(req, res) {
 async function renderProject(req, res) {
     const user = req.session.user;
     console.log("usernya adalah ",user);
-    const project = await Project.findAll({
-        include:{
-            model: User,
-            as: "user",
-            attributes: {exclude: ["password"]}
-        },
-        order:  [["createdAt", "DESC"]]
-    });
-    console.log("Pemilik project Paling Atas" , project[0].user)
+
     
+    const query = `SELECT * FROM public. "Projects"`
 
-    // const query = `SELECT * FROM public. "Projects"`
-
-    // const project = await sequelize.query(query, {
-    //     type: QueryTypes.SELECT
-    // })
+    const project = await sequelize.query(query, {
+        type: QueryTypes.SELECT
+    })
     if(user){
         console.log("project list : ", project)
         res.render("project-list", {project:project, user:user});
@@ -296,7 +293,15 @@ async function renderProject(req, res) {
 
 //addproject
 async function addProject(req,res) {
+    const user = req.session.user;
+    console.log("user dari addblog: ", user);
+    const idUser = user.id;
+    console.log("id usernya dalah : ", idUser);
+    
+    
     const{projectName,startAt,endAt,descript,tech}=req.body;
+
+    const image = req.file.path;
 
     console.log("nama project: ",projectName);
     console.log("dibuat pada: ",startAt);
@@ -317,8 +322,8 @@ async function addProject(req,res) {
 
     
 
-    const query = `INSERT INTO  "Projects" ("projectName", descript, tech, "startAt", "endAt", image, "totalHari")
-                  VALUES ('${projectName}', '${descript}', '${tech}', '${startAt}','${endAt}', '${image}', '${selisih}')`;
+    const query = `INSERT INTO  "Projects" ("authorId","projectName", descript, tech, "startAt", "endAt", image, "totalHari")
+                  VALUES ('${idUser}','${projectName}', '${descript}', '${tech}', '${startAt}','${endAt}', '${image}', '${selisih}')`;
 
     const addProject = await sequelize.query(query, {
         type: QueryTypes.INSERT

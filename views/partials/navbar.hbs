@@ -36,11 +36,32 @@
               " href="/testimonials">Testimonials</a>
             </li>
           </ul>
-          {{#if user }}
-            <span class="me-3">{{user.name}}</span>
-            <a href="/logout" class="me-3">Logout</a>
-          {{/if }}
-            <a href="/contact" class="btn btn-outline-primary" type="submit">Contact</a>
+          
+
+            {{!-- profile colaps --}}
+            <div class="btn-group profile">
+              <button class="btn btn-sm dropdown-toggle button" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i data-feather="user" style="width: 25px; margin:0;"></i><p style="font-size: 15px;">{{user.name}}</p>
+              </button>
+              <ul class="dropdown-menu">
+                <li>
+                 {{#unless user }}
+                    <a href="/login" class="me-3">Log in</a>
+                 {{/unless }}
+                </li>
+                <li>
+                 {{#unless user }}
+                    <a href="/register" class="me-3">Register</a>
+                 {{/unless }}
+                </li>
+                <li>
+                {{#if user}}
+                <a href="/logout" class="me-3">Log Out</a>
+                {{/if}}
+                </li>
+              </ul>
+            </div>
+
         </div>
       </div>
     </nav>

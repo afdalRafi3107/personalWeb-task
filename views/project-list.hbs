@@ -8,9 +8,11 @@
           <div style="text-align:right;
                       margin: 20px auto;
                       ">
+            {{#if user }}
             <form action="" method="post">
             <a class="btn btn-primary text-end" href="/projectAdd">Add Project</a>
             </form>
+            {{/if }}
           </div>
           <hr>
 
@@ -26,6 +28,7 @@
                 <p>durasi: {{this.totalHari}} hari</p>
               <p class="card-text">{{this.descript}}</p>
               <p style="font-style: italic;">{{this.tech}}</p>
+              
               {{#if (equal ../user.id this.authorId)}}
               <div class="tombol align-text-bottom">
               <a href="/projectEdit/{{this.id}}" class="btn">Update</a>

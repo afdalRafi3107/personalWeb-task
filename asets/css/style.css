@@ -23,10 +23,10 @@ body {
   margin-bottom: 0;
   padding: 0;
 }
-.navbar ul li a:hover {
+.navbar  ul li .nav-link:hover {
   color: #0d6dfd;
 }
-.navbar ul li a::after {
+.navbar  ul li .nav-link::after {
   content: "";
   display: block;
   padding-bottom: 1px;
@@ -34,9 +34,27 @@ body {
   transform: scaleX(0);
   transition: 0.2s;
 }
-.navbar ul li a:hover::after {
+.navbar  ul li .nav-link:hover::after {
   transform: scaleX(1);
 }
+/* dropdown nav profile */
+.profile ul li a{
+  font-size: 15px;
+  margin-left: 10px;
+}
+.profile ul li a:hover{
+  color: #0477f1;
+} 
+.profile .button{
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+.button{
+  height: 30px;
+  font-weight: bold;
+} 
+
 
 /* container */
 /* .container {
@@ -221,4 +239,6 @@ padding: 20px;
   height: 250px;
   object-fit:cover;
 }
+
+
 

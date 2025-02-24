@@ -4,10 +4,13 @@ const express = require("express");
 const app = express();
 const port = 3000;
 const hbs = require("hbs")
-const path = require("path")
+const path = require("path");
 const flash = require("express-flash")
 const methodOverride = require('method-override')
 const session = require("express-session")
+const upload = require("./middleware/upload-file");
+require("dotenv").config();
+
 
 app.set('view engine', 'hbs')
 app.set("views" ,path.join(__dirname, '/views'))
@@ -17,6 +20,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 app.use(methodOverride("_method"))
 app.use(express.static('asets'))
+app.use("/uploads", express.static(path.join(__dirname, './uploads')))
 app.use(flash());
 app.use(session(
     {
@@ -54,6 +58,8 @@ const{
     renderLogin,
     renderRegister,
     }= require("./controllers/controllers");
+
+
 
 hbs.registerHelper("formatDateToWIB", formatDateToWIB)
 hbs.registerHelper("getRelatifTime", getRelatifTime)
@@ -101,7 +107,7 @@ app.get("/blog-add", (req, res)=>{
     }
 })
 //tambah blog
-app.post("/blog-add", addBlog);
+app.post("/blog-add", upload.single("image"), addBlog);
 //hapus blog
 app.post("/blog-list/:id", renderBlog);
 app.delete("/blog-list/:id", deleteBlog);
@@ -121,7 +127,7 @@ app.get("/projectAdd", (req, res)=>{
     res.render("project-add", {user: user})
 })
 //tambah project
-app.post("/projectAdd", addProject);
+app.post("/projectAdd", upload.single("image"), addProject);
 //deleteproject
 app.delete("/projectList/:id", deleteProject)
 //render Project

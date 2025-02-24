@@ -1,0 +1,38 @@
+
+    {{#> layout currentPage="Testimonials" }}
+    <!-- content -->
+    <div class="container-lg mt-3 mb-5 testimonials" >
+          <div class="" style="text-align: center;">
+            <h1>Testimonials</h1>
+          </div>
+          <div style="text-align:center;
+                      ">
+          <div class="testimonial-star-buttons">
+            <button class="btn btn-primary" onclick="showAllTestimonials()">All</button>
+            <button class="btn btn-primary" onclick="filterTestimonialsByStar(1)">1★</button>
+            <button class="btn btn-primary" onclick="filterTestimonialsByStar(2)">2★</button>
+            <button class="btn btn-primary" onclick="filterTestimonialsByStar(3)">3★</button>
+            <button class="btn btn-primary" onclick="filterTestimonialsByStar(4)">4★</button>
+            <button class="btn btn-primary"  onclick="filterTestimonialsByStar(5)">5★</button>
+          </div>
+          </div>
+          <hr>
+
+          <!-- bagian konten card -->
+        <div class="row" id="testimonialsContainer">
+        <div class="col-sm-4 mt-3">
+          <div class="card" style="width: 18rem;">
+          <img src="/img/avatar.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+          <p class="card-text">${testimonial.caption}</p>
+                <p class="card-text" style="text-align: right;">- ${testimonial.author}</p>
+                <p class="card-text" style="font-weight: bold; text-align: right;">${testimonial.rating}★</p>
+          </div>
+          </div>
+        </div>
+
+
+        </div>
+      </div>
+     <script src="/javasript/testimonials.js"></script>
+      {{/layout}}

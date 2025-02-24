@@ -1,5 +1,12 @@
   
-  {{#> layout currentPage='Home' }}
+  {{#> layout currentPage='Home'}}
+
+  {{!-- pesan login saat selesai mendaftar --}}
+    {{#if messages.succes }}
+    <div class="alert alert-success" role="alert">
+      {{ messages.succes }}
+    </div>
+    {{/if }}
     <!-- content new -->
     <div class="container-lg mt-3 mb-5" style=" padding:30px; text-align: center;">
 

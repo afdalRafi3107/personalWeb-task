@@ -18,8 +18,11 @@
   "homepage": "https://github.com/afdalRafi3107/personalWeb-task#readme",
   "description": "",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "bootbox": "^6.0.0",
     "express": "^4.21.2",
+    "express-flash": "^0.0.2",
+    "express-session": "^1.18.1",
     "hbs": "^4.2.0",
     "instead": "^1.0.3",
     "method-override": "^3.0.0",

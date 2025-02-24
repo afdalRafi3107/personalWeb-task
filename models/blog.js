@@ -11,6 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      BLog.belongsTo(models.User, {
+        foreignKey: "authorId",
+        as: "user",
+        onDelete: "SET NULL",
+        onUpdate: "CASCADE",
+      });
     }
   }
   BLog.init({

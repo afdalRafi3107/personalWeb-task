@@ -12,14 +12,14 @@
               {{#if (equal currentPage 'Home') }}
                 active fw-semibold
               {{/if}}
-              " href="/index">Home</a>
+              " href="/">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link
                 {{#if (equal currentPage 'Project') }}
                 active fw-semibold
               {{/if}}
-              " href="/projectList">My Project</a>
+              " href="/projectList">MyProject</a>
             </li>
             <li class="nav-item">
               <a class="nav-link
@@ -28,7 +28,18 @@
               {{/if}}
               " href="/blog-list">Blog</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link
+                {{#if (equal currentPage 'TesTimonials') }}
+                active fw-semibold
+              {{/if}}
+              " href="/testimonials">Testimonials</a>
+            </li>
           </ul>
+          {{#if user }}
+            <span class="me-3">{{user.name}}</span>
+            <a href="/logout" class="me-3">Logout</a>
+          {{/if }}
             <a href="/contact" class="btn btn-outline-primary" type="submit">Contact</a>
         </div>
       </div>

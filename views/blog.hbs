@@ -7,9 +7,11 @@
           <div style="text-align:right;
                       margin: 20px auto;
                       ">
+            {{#if user }}
             <form action="" method="post">
             <a class="btn btn-primary text-end" href="/blog-add">Tambah Blog</a>
             </form>
+            {{/if }}
           </div>
           <hr>
     {{!-- content --}}
@@ -23,14 +25,18 @@
         <img src="{{this.image}}" alt="">
       </div>
       <div class="col-sm-9">
+        {{!-- kalau di dalan scop each user tidak di kenal --}}
+      {{#if (equal ../user.id this.authorId)}}
         <div class="a">
-        <a href="/blog-edit/{{this.id}}" class="btn btn-danger">Ubah</a>
+        <a href="/blog-edit/{{this.id}}" class="btn btn-primary">Ubah</a>
         <form action="/blog-list/{{this.id}}?_method=DELETE" method="post" style="display: inline;">
         <button class="btn btn-danger" onclick="return confirm('hapus?')" >Hapus</button>
         </form>
         </div>
+        {{/if }}
+
         <a href="/blog-detail/{{this.id}}" style="text-decoration: none;" class="text-body"><h2>{{this.title}}</h2></a>
-        <p>{{ formatDateToWIB  this.createdAt}} | m afdal rafi</p>
+        <p>{{ formatDateToWIB  this.createdAt}} | {{this.user.name}}</p>
         <p>{{this.content}}</p>
 
         <p class="time">{{getRelatifTime this.createdAt}}</p>

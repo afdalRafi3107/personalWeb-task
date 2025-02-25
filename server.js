@@ -15,7 +15,7 @@ require("dotenv").config();
 app.set('view engine', 'hbs')
 app.set("views" ,path.join(__dirname, '/views'))
 
-//module apa saj ayan gkita gunakan
+//module apa saja yang kita gunakan
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 app.use(methodOverride("_method"))

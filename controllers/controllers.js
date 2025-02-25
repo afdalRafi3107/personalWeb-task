@@ -1,6 +1,8 @@
 const {Sequelize, QueryTypes, DATE} = require('sequelize')
 const config = require("../config/config.json");
 const query = require('express');
+const path = require("path");
+
 
 const sequelize = new Sequelize(config.development);
 
@@ -9,7 +11,7 @@ const bcrypt = require("bcrypt")
 const {User,BLog,Project} = require("../models")
 
 const saltRounds = 10;
-require("dotenv").config();
+
 
 
 //-------------------login dan register-----------------------------
@@ -168,18 +170,17 @@ async function renderBlog(req,res){
 //delet blog
 async function addBlog(req, res) {
     const user = req.session.user;
+    const {title, content} = req.body;
+
 
     const idUser = user.id;
     console.log("ID usernya adalah : ", idUser);
-    
-    
-    const {title, content} = req.body;
 
-    image = req.file.path;
 
     let dummyImage = "https://picsum.photos/300/300";
     
-    console.log("image yang di upload : ", image);
+    const image = req.file.path
+
 
     let query = `INSERT INTO  "BLogs" ("authorId",title,content,image)
                  VALUES ('${idUser}','${title}', '${content}', '${image}')`;
@@ -277,7 +278,7 @@ async function renderProject(req, res) {
     console.log("usernya adalah ",user);
 
     
-    const query = `SELECT * FROM public. "Projects"`
+    const query = `SELECT * FROM public. "Projects" ORDER BY "createdAt" DESC`
 
     const project = await sequelize.query(query, {
         type: QueryTypes.SELECT
@@ -301,25 +302,34 @@ async function addProject(req,res) {
     
     const{projectName,startAt,endAt,descript,tech}=req.body;
 
-    const image = req.file.path;
 
     console.log("nama project: ",projectName);
     console.log("dibuat pada: ",startAt);
     console.log("selesai pada: ",endAt);
     console.log("desktipsi: ",descript);
     console.log("tech: ",tech);
-    let teknologi = tech.join(", ");
-    console.log("teknologi: ",teknologi);
+
+    //let teknologi = tech.join(", ");
+
+
+    // console.log("teknologi: ",teknologi);
     
     const oneDay = 24 * 60 * 60 * 1000;
     var tglPertama = Date.parse(startAt);
     var tglKedua = Date.parse(endAt);
+    console.log("tanggal Petama " ,tglPertama);
+    console.log("tanggal kedua ", tglKedua);
+    
     
     var selisih = (tglKedua - tglPertama) / oneDay;
+
     console.log("Total hari: ",selisih);
     
-    image = "https://picsum.photos/300/300";
+    dummyimage = "https://picsum.photos/300/300";
 
+    const image = req.file.path;
+    console.log("gambar yang di upload ", image);
+    
     
 
     const query = `INSERT INTO  "Projects" ("authorId","projectName", descript, tech, "startAt", "endAt", image, "totalHari")

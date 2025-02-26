@@ -8,7 +8,8 @@ const sequelize = new Sequelize(config.development);
 
 const bcrypt = require("bcrypt")
 
-const {User,BLog,Project} = require("../models")
+const {User,BLog,Project} = require("../models");
+const { log } = require('console');
 
 const saltRounds = 10;
 
@@ -144,18 +145,21 @@ async function renderBlog(req,res){
     const user = req.session.user;
     console.log("usernya adalah ",user);
 
-    // const blogs = await sequelize.query(`SELECT * FROM public. "BLogs"`, {
-    //     type: sequelize.QueryTypes.SELECT,
-    // })
-    const blogs = await BLog.findAll({
-        include:{
-            model: User,
-            as: "user",
-            attributes: {exclude: ["password"]}
-        },
-        order:  [["createdAt", "DESC"]]
-    });
-    console.log("Pemilik Blog Paling Atas" , blogs[0].user)
+    const query = `SELECT "idBlog", "authorId",name, title, image, content, "dibuatPada"
+	FROM "BLogs" JOIN "Users" ON ("BLogs"."authorId"="Users".id) ORDER BY "dibuatPada" DESC `;
+
+    const blogs = await sequelize.query(query, {
+        type: QueryTypes.SELECT,
+    })
+    // const blogs = await BLog.findAll({
+    //     include:{
+    //         model: User,
+    //         as: "user",
+    //         attributes: {exclude: ["password"]}
+    //     },
+    //     order:  [["createdAt", "DESC"]]
+    // });
+    console.log("Pemilik Blog Paling Atas" , blogs.user)
 
     // console.log("ini isi blog", blogs);
 
@@ -176,10 +180,9 @@ async function addBlog(req, res) {
     const idUser = user.id;
     console.log("ID usernya adalah : ", idUser);
 
-
-    let dummyImage = "https://picsum.photos/300/300";
-    
     const image = req.file.path
+    console.log("gambar yang di masukkan : ", image);
+    
 
 
     let query = `INSERT INTO  "BLogs" ("authorId",title,content,image)
@@ -194,8 +197,8 @@ async function addBlog(req, res) {
 
 //delet blog
 async function deleteBlog(req, res) {
-    const id = req.params.id;
-    const query = `DELETE FROM "BLogs" WHERE id = ${id}`;
+    const id = req.params.idBlog;
+    const query = `DELETE FROM "BLogs" WHERE idBlog = ${id}`;
 
     const deleteBlog = await sequelize.query(query, {
         type: QueryTypes.DELETE
@@ -211,8 +214,10 @@ async function renderEditBlog(req, res) {
     const user = req.session.user;
     console.log("usernya adalah ",user);
 
-    const id = req.params.id;
-    const query = `SELECT * FROM "BLogs" WHERE id=${id}`;
+    const id = req.params.idBlog;
+    console.log("Id yang di pilih adalah : ", id);
+    
+    const query = `SELECT "idBlog", "authorId", title, image, content, "createdAt", "updatedAt" FROM "BLogs" WHERE "idBlog" = ${id}`;
  if(!user){
     res.redirect("/login")
  }else{
@@ -221,24 +226,39 @@ async function renderEditBlog(req, res) {
          type: QueryTypes.SELECT
      })
      console.log("ini yamg mau di edit ", renderBlogEdit[0]);
-     res.render("blog-edit", {blog:renderBlogEdit[0]});
+     res.render("blog-edit", {blog:renderBlogEdit[0], uer:user});
  }
 }
 
 async function editBlog(req, res) {
     
-    const id = req.params.id
-    const{title, content} = req.body;
-    let image = "https://picsum.photos/300/300";
+    const id = req.params.idBlog;
+    const{title, content, check} = req.body;
 
-    const query = `UPDATE "BLogs" set title='${title}', content='${content}', image='${image}' WHERE id=${id}`
-
-    const editBlog = await sequelize.query(query, {
-        type: QueryTypes.UPDATE
-    }) 
     
-    console.log("hasil update : ", editBlog);
-    res.redirect("/blog-list")
+    console.log("check :" ,check);
+    
+
+    if(check == 1 ){
+        const image = req.file.path;
+        const query = `UPDATE "BLogs" set title='${title}', content='${content}', image='${image}' WHERE "idBlog"=${id}`;
+    
+        const editBlog = await sequelize.query(query, {
+            type: QueryTypes.UPDATE,
+
+        }) 
+            console.log("hasil update : ", editBlog);
+            res.redirect("/blog-list")
+    }else{
+        const query = `UPDATE "BLogs" set title='${title}', content='${content}' WHERE "idBlog"=${id}`;
+    
+        const editBlog = await sequelize.query(query, {
+            type: QueryTypes.UPDATE,
+        }) 
+            console.log("hasil update : ", editBlog);
+            res.redirect("/blog-list")
+    }
+    
     
 }
 
@@ -246,29 +266,22 @@ async function renderBlogDetail(req, res) {
     
     const user = req.session.user;
 
-    const id = req.params.id;
+    const id = req.params.idBlog;
+
     console.log("ini id : ",id);
     console.log("usernya di blog detail adlaha", user);
     
+    const query = `SELECT "authorId",name, title, image, content, "dibuatPada"
+	FROM "BLogs" JOIN "Users" ON ("BLogs"."authorId"="Users".id) WHERE "idBlog" = ${id}`;
 
-    const blogDetail = await BLog.findOne({
-        include:{
-            model: User,
-            as: "user",
-            attributes: {exclude: ["password"]}
-        },
-        where : {
-            id: id,
-        }
+    const blogDetail = await sequelize.query(query, {
+        type: QueryTypes.SELECT
     })
-    // console.log("pemilik renderBlog" , blogDetail[0].user)
-    if(blogDetail == null){
-        res.render("page-404")
-    }else{
-        console.log("yan di pilih :", blogDetail);
-        
-        res.render('blog-detail', {blog:blogDetail});
-    }
+
+
+        console.log("yang di pilih :", blogDetail[0]);
+        res.render('blog-detail', {blog:blogDetail[0], user:user});
+
 }
 
 //-----------------------------Proses project-------------------------
@@ -373,14 +386,16 @@ async function renderEditProject(req, res) {
 
 async function editProject(req,res){
     const id = req.params.id;
-    const{projectName,startAt,endAt,descript,tech}=req.body;
+    const{projectName,startAt,endAt,descript,tech,check}=req.body;
     console.log("nama project: ",projectName);
     console.log("dibuat pada: ",startAt);
     console.log("selesai pada: ",endAt);
     console.log("desktipsi: ",descript);
     console.log("tech: ",tech);
-    let teknologi = tech.join(", ");
-    console.log("teknologi: ",teknologi);
+
+    //let teknologi = tech.join(", ");
+    
+    // console.log("teknologi: ",teknologi);
     
     const oneDay = 24 * 60 * 60 * 1000;
     var tglPertama = Date.parse(startAt);
@@ -389,14 +404,23 @@ async function editProject(req,res){
     var selisih = (tglKedua - tglPertama) / oneDay;
     console.log("Total hari: ",selisih);
     
-    image = "https://picsum.photos/300/300";
-
-    const query = `UPDATE "Projects" set "projectName"='${projectName}', descript='${descript}', tech='${teknologi}', "startAt"='${startAt}', "endAt"='${endAt}', image='${image}', "totalHari"='${selisih}' WHERE id = ${id}`;
-    const updateProject = await sequelize.query(query,{
-        type: QueryTypes.UPDATE
-    })
-    console.log("terupdate : ", updateProject)
-    res.redirect("/projectList")
+    
+    if(check == 1){
+        const image = req.file.path;
+        const query = `UPDATE "Projects" set "projectName"='${projectName}', descript='${descript}', tech='${tech}', "startAt"='${startAt}', "endAt"='${endAt}', image='${image}', "totalHari"='${selisih}' WHERE id = ${id}`;
+        const updateProject = await sequelize.query(query,{
+            type: QueryTypes.UPDATE
+        })
+        console.log("terupdate : ", updateProject)
+        res.redirect("/projectList")
+    }else{
+        const query = `UPDATE "Projects" set "projectName"='${projectName}', descript='${descript}', tech='${tech}', "startAt"='${startAt}', "endAt"='${endAt}', "totalHari"='${selisih}' WHERE id = ${id}`;
+        const updateProject = await sequelize.query(query,{
+            type: QueryTypes.UPDATE
+        })
+        console.log("terupdate : ", updateProject)
+        res.redirect("/projectList")
+    }
 }
 
 

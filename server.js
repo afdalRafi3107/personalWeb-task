@@ -109,14 +109,14 @@ app.get("/blog-add", (req, res)=>{
 //tambah blog
 app.post("/blog-add", upload.single("image"), addBlog);
 //hapus blog
-app.post("/blog-list/:id", renderBlog);
-app.delete("/blog-list/:id", deleteBlog);
+app.post("/blog-list/:idBlog", renderBlog);
+app.delete("/blog-list/:idBlog", deleteBlog);
 //render edit blog
-app.get("/blog-edit/:id", renderEditBlog);
+app.get("/blog-edit/:idBlog", renderEditBlog);
 //edit blog
-app.post("/blog-edit/:id", editBlog);
+app.post("/blog-edit/:idBlog", upload.single("image"), editBlog);
 //render blog detail
-app.get("/blog-detail/:id", renderBlogDetail);
+app.get("/blog-detail/:idBlog", renderBlogDetail);
 
 //-----------------------------proses project page--------------------
 //panggil halaman project-list
@@ -135,7 +135,7 @@ app.get("/projectEdit",  (req, res)=>{
     res.render("project-edit")
 })
 app.get("/projectEdit/:id", renderEditProject)
-app.post("/projectEdit/:id", editProject)
+app.post("/projectEdit/:id", upload.single("image"), editProject)
 
 // -------------------render testimonials------------------------------------
 app.get("/testimonials",(req,res)=>{

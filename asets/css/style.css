@@ -200,6 +200,20 @@ align-items: center;
 padding: 20px;
 }
 
+.projectCard .deskripsi{
+  height: 30%;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  
+}
+.projectCard h2{
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 /* blog css ----------------------------------------------------------------------*/
 .blog{
   padding: 20px;
@@ -219,6 +233,19 @@ padding: 20px;
 .blog .time {
   text-align: right;
   color: gray;
+}
+.blog .conten{
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+.blog .judul{
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 .blogDetail section article{
   text-align: justify;

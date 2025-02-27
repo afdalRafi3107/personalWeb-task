@@ -3,8 +3,9 @@ const config = require("../config/config.js");
 const query = require('express');
 const path = require("path");
 
+require("dotenv").config();
 
-const sequelize = new Sequelize(config.development);
+const sequelize = new Sequelize(config[process.env.NODE_ENV]);
 
 const bcrypt = require("bcrypt")
 

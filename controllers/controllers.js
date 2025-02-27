@@ -198,7 +198,7 @@ async function addBlog(req, res) {
 //delet blog
 async function deleteBlog(req, res) {
     const id = req.params.idBlog;
-    const query = `DELETE FROM "BLogs" WHERE idBlog = ${id}`;
+    const query = `DELETE FROM "BLogs" WHERE "idBlog" = ${id}`;
 
     const deleteBlog = await sequelize.query(query, {
         type: QueryTypes.DELETE

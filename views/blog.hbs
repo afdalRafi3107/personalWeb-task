@@ -29,8 +29,8 @@
       {{#if (equal ../user.id this.authorId)}}
         <div class="a">
         <a href="/blog-edit/{{this.idBlog}}" class="btn btn-primary">Ubah</a>
-        <form action="/blog-list/{{this.idBlog}}?_method=DELETE" method="post" style="display: inline;">
-        <button class="btn btn-danger" onclick="return confirm('hapus?')" >Hapus</button>
+        <form id="delete" action="/blog-list/{{this.idBlog}}?_method=DELETE" method="post" style="display: inline;">
+        <button  class="btn btn-danger" onclick="hapus(event)" >Hapus</button>
         </form>
         </div>
         {{/if }}
@@ -47,6 +47,8 @@
     {{/each }}
  </div>
 
- 
+       <script src="/javasript/deleteAlert.js">
+
+      </script>
 
  {{/layout}}

@@ -2,7 +2,6 @@
 //memanggil library express
 const express = require("express");
 const app = express();
-const port = 3000;
 const hbs = require("hbs")
 const path = require("path");
 const flash = require("express-flash")
@@ -10,6 +9,8 @@ const methodOverride = require('method-override')
 const session = require("express-session")
 const upload = require("./middleware/upload-file");
 require("dotenv").config();
+
+const port = process.env.SERVER_PORT || 3000;
 
 
 app.set('view engine', 'hbs')
@@ -25,7 +26,7 @@ app.use(flash());
 app.use(session(
     {
     name :"my-session",
-    secret:"asdasda",
+    secret:"dasdas",
     resave:false,
     saveUninitialized: true
     }

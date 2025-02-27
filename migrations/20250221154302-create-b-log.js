@@ -3,25 +3,33 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('BLogs', {
-      id: {
+      idBlog: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
       authorId: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       title: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       image: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       content: {
+        allowNull: false,
         type: Sequelize.TEXT
       },
       createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      dibuatPada: {
         allowNull: false,
         type: Sequelize.DATE
       },

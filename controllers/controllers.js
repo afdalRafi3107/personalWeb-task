@@ -1,5 +1,5 @@
 const {Sequelize, QueryTypes, DATE} = require('sequelize')
-const config = require("../config/config.json");
+const config = require("../config/config.js");
 const query = require('express');
 const path = require("path");
 
